@@ -1,120 +1,56 @@
-=== Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
-Donate link: https://www.georgenicolaou.me//
-Tags: comments, spam
-Requires at least: 3.0.1
-Tested up to: 3.4
+=== GN Better Shipping Calculator ===
+Contributors: orionaselite
+Donate link: https://www.georgenicolaou.me/
+Tags: woocommerce, shipping, calculator, checkout, address
+Requires at least: 5.6
+Tested up to: 6.5
+Requires PHP: 7.4
 Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+Improve the WooCommerce shipping calculator with required address fields and a better customer experience.
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+GN Better Shipping Calculator replaces the default WooCommerce shipping calculator with an enhanced version that captures more accurate customer information before estimating rates. The plugin ships with its own template and ensures that required address details are stored on the WooCommerce customer object, providing reliable shipping quotes on the cart page.
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+**Key features**
 
-A few notes about the sections above:
-
-*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
-*   "Tags" is a comma separated list of tags that apply to the plugin
-*   "Requires at least" is the lowest version that the plugin will work on
-*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
-higher versions... this is just the highest one you've verified.
-*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
-stable.
-
-    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
-if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
-for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
-is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
-your in-development version, without having that information incorrectly disclosed about the current stable version
-that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
-
-    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
-you put the stable version, in order to eliminate any doubt.
+* Overrides the standard `cart/shipping-calculator.php` template with an improved layout bundled with the plugin.
+* Requires Address Line 1 before a quote can be calculated, preventing incomplete submissions.
+* Persists Address Line 1 and Address Line 2 to the WooCommerce customer record so the information is available for the next steps in checkout.
+* Loads custom styles and scripts that are scoped to the calculator for easy front-end customization.
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
-e.g.
-
-1. Upload `gn-better-shipping-calculator.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+1. Upload the `gn-better-shipping-calculator` folder to the `/wp-content/plugins/` directory.
+1. Activate the plugin through the **Plugins** menu in WordPress.
+1. Visit the WooCommerce cart page to use the improved shipping calculator.
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= Does this plugin work with my existing theme? =
 
-An answer to that question.
+Yes. The calculator template is loaded through the standard WooCommerce template override system, so it works with any theme that supports the default shipping calculator.
 
-= What about foo bar? =
+= Can I customize the calculator styles? =
 
-Answer to foo bar dilemma.
+Absolutely. The plugin enqueues its own stylesheet and script handles that you can dequeue, override, or extend via your theme or a custom plugin.
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+1. Enhanced shipping calculator on the WooCommerce cart page.
 
 == Changelog ==
 
 = 1.0.1 =
 * Require Address Line 1 when calculating shipping to avoid incomplete address submissions.
 
-= 1.0 =
-* A change since the previous version.
-* Another change.
-
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
+= 1.0.0 =
+* Initial public release of the improved WooCommerce shipping calculator.
 
 == Upgrade Notice ==
 
 = 1.0.1 =
 Address Line 1 is now required for shipping calculations to ensure accurate results.
-
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
-
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
-
-== Arbitrary section ==
-
-You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
-
-== A brief Markdown Example ==
-
-Ordered list:
-
-1. Some feature
-1. Another feature
-1. Something else about the plugin
-
-Unordered list:
-
-* something
-* something else
-* third thing
-
-Here's a link to [WordPress](http://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
-Titles are optional, naturally.
-
-[markdown syntax]: http://daringfireball.net/projects/markdown/syntax
-            "Markdown is what the parser uses to process much of the readme file"
-
-Markdown uses email style notation for blockquotes and I've been told:
-> Asterisks for *emphasis*. Double it up  for **strong**.
-
-`<?php code(); // goes in backticks ?>`
