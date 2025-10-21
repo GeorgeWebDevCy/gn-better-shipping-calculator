@@ -4,7 +4,7 @@ Donate link: https://www.georgenicolaou.me//
 Tags: comments, spam
 Requires at least: 3.0.1
 Tested up to: 3.4
-Stable tag: 4.3
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -67,6 +67,9 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 == Changelog ==
 
+= 1.0.1 =
+* Require Address Line 1 when calculating shipping to avoid incomplete address submissions.
+
 = 1.0 =
 * A change since the previous version.
 * Another change.
@@ -75,6 +78,9 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 * List versions from most recent at top to oldest at bottom.
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Address Line 1 is now required for shipping calculations to ensure accurate results.
 
 = 1.0 =
 Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.

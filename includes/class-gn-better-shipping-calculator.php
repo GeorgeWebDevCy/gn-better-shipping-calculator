@@ -67,11 +67,11 @@ class Gn_Better_Shipping_Calculator {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		if ( defined( 'GN_BETTER_SHIPPING_CALCULATOR_VERSION' ) ) {
-			$this->version = GN_BETTER_SHIPPING_CALCULATOR_VERSION;
-		} else {
-			$this->version = '1.0.0';
-		}
+                if ( defined( 'GN_BETTER_SHIPPING_CALCULATOR_VERSION' ) ) {
+                        $this->version = GN_BETTER_SHIPPING_CALCULATOR_VERSION;
+                } else {
+                        $this->version = '1.0.1';
+                }
 		$this->plugin_name = 'gn-better-shipping-calculator';
 
 		$this->load_dependencies();
