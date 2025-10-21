@@ -100,4 +100,59 @@ class Gn_Better_Shipping_Calculator_Public {
 
 	}
 
+	/**
+	 * Override the WooCommerce shipping calculator template with the plugin version.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $template      Located template path.
+	 * @param string $template_name Requested template name.
+	 * @param string $template_path Template path from WooCommerce.
+	 *
+	 * @return string
+	 */
+	public function override_shipping_calculator_template( $template, $template_name, $template_path ) {
+		if ( 'cart/shipping-calculator.php' !== $template_name ) {
+			return $template;
+		}
+
+		$plugin_template = plugin_dir_path( __DIR__ ) . 'woocommerce/cart/shipping-calculator.php';
+
+		if ( file_exists( $plugin_template ) ) {
+			return $plugin_template;
+		}
+
+		return $template;
+	}
+
+	/**
+	 * Sanitize and persist custom address fields when calculating shipping.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $address Shipping address being processed.
+	 *
+	 * @throws Exception When address line 1 is empty.
+	 *
+	 * @return array
+	 */
+	public function handle_cart_shipping_address( $address ) {
+		$address_1 = isset( $_POST['calc_shipping_address_1'] ) ? wc_clean( wp_unslash( $_POST['calc_shipping_address_1'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$address_2 = isset( $_POST['calc_shipping_address_2'] ) ? wc_clean( wp_unslash( $_POST['calc_shipping_address_2'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
+
+		if ( '' === $address_1 ) {
+			throw new Exception( __( 'Address line 1 is required.', 'gn-better-shipping-calculator' ) );
+		}
+
+		if ( function_exists( 'WC' ) && WC()->customer ) {
+			WC()->customer->set_shipping_address_1( $address_1 );
+			WC()->customer->set_shipping_address_2( $address_2 );
+		}
+
+		$address['address_1'] = $address_1;
+		$address['address_2'] = $address_2;
+
+		return $address;
+	}
+
 }

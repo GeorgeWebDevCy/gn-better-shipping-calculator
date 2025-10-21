@@ -166,14 +166,16 @@ class Gn_Better_Shipping_Calculator {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_public_hooks() {
+        private function define_public_hooks() {
 
-		$plugin_public = new Gn_Better_Shipping_Calculator_Public( $this->get_plugin_name(), $this->get_version() );
+                $plugin_public = new Gn_Better_Shipping_Calculator_Public( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+                $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
+                $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+                $this->loader->add_filter( 'woocommerce_locate_template', $plugin_public, 'override_shipping_calculator_template', 10, 3 );
+                $this->loader->add_filter( 'woocommerce_cart_calculate_shipping_address', $plugin_public, 'handle_cart_shipping_address', 10, 1 );
 
-	}
+        }
 
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
