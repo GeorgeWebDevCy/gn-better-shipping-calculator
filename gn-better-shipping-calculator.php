@@ -17,8 +17,8 @@
  * Plugin URI:        https://www.georgenicolaou.me/plugins/gn-better-shipping-calculator
  * Description:       It a better woocommerce shipping calculator for WooCommece
  * Version:           1.0.1
- * Author:            George Nicolaou
- * Author URI:        https://www.georgenicolaou.me//
+ * Author:            George Nicolaou (orionaselite)
+ * Author URI:        https://profiles.wordpress.org/orionaselite/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       gn-better-shipping-calculator
