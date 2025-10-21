@@ -67,15 +67,16 @@ register_deactivation_hook( __FILE__, 'deactivate_gn_better_shipping_calculator'
 require plugin_dir_path( __FILE__ ) . 'includes/class-gn-better-shipping-calculator.php';
 
 $gn_better_shipping_calculator_update_checker = Puc_v4_Factory::buildUpdateChecker(
-	'https://updates.georgenicolaou.me/wp-update-server/?action=get_metadata&slug=gn-better-shipping-calculator',
-	'gn-better-shipping-calculator/gn-better-shipping-calculator.php',
+	'https://github.com/GeorgeWebDevCy/gn-better-shipping-calculator/',
+	__FILE__,
 	'gn-better-shipping-calculator'
 );
 
 $gn_better_shipping_calculator_update_branch = getenv( 'GN_BETTER_SHIPPING_CALCULATOR_UPDATE_BRANCH' );
-if ( ! empty( $gn_better_shipping_calculator_update_branch ) ) {
-	$gn_better_shipping_calculator_update_checker->setBranch( $gn_better_shipping_calculator_update_branch );
+if ( empty( $gn_better_shipping_calculator_update_branch ) ) {
+	$gn_better_shipping_calculator_update_branch = 'main';
 }
+$gn_better_shipping_calculator_update_checker->setBranch( $gn_better_shipping_calculator_update_branch );
 
 $gn_better_shipping_calculator_auth_token = getenv( 'GN_BETTER_SHIPPING_CALCULATOR_UPDATE_AUTH_TOKEN' );
 if ( ! empty( $gn_better_shipping_calculator_auth_token ) ) {
