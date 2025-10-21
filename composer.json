@@ -1,0 +1,9 @@
+{
+    "name": "georgenicolaou/gn-better-shipping-calculator",
+    "description": "GN Better Shipping Calculator WordPress plugin Composer setup.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "yahnis-elsts/plugin-update-checker": "^4.13"
+    }
+}
